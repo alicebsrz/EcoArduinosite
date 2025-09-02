@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoArduino - Reciclagem + Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
+                        </svg>
+                        <span class="font-black">EcoArduino</span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
+                        <a href="#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
+                        <a href="#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
+                        <a href="#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-green-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                <a href="#inicio" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Início</a>
+                <a href="#sobre" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
+                <a href="#tutoriais" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Tutoriais</a>
+                <a href="#projetos" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Projetos</a>
+                <a href="#contato" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="text-center p-8">
+            <div class="hero-square bg-green-500 rounded-3xl shadow-2xl p-10 inline-block">
+                <h1 class="text-7xl font-black text-white">EcoArduino</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Sobre o Projeto</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Um projeto acadêmico que une sustentabilidade e tecnologia, mostrando como materiais recicláveis podem se tornar componentes de projetos eletrônicos funcionais.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">♻️</span></div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sustentabilidade</h3>
+                    <p class="text-gray-600">Reutilizamos materiais que iriam para o lixo, dando nova vida através da tecnologia.</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">🔧</span></div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Tecnologia</h3>
+                    <p class="text-gray-600">Arduino como base para criar soluções inteligentes e automatizadas.</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-2xl">📚</span></div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Educação</h3>
+                    <p class="text-gray-600">Tutoriais passo a passo para ensinar e inspirar outros estudantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutoriais Section -->
+    <section id="tutoriais" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Tutoriais Disponíveis</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Aprenda a criar projetos incríveis com materiais reciclados e Arduino. Cada tutorial inclui lista de materiais, código e instruções detalhadas.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card da Luminária -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-48 flex items-center justify-center"><span class="text-6xl">💡</span></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Luminária com Sensor</h3>
+                        <p class="text-gray-600 mb-4">Crie uma luminária inteligente usando garrafas PET e sensor de movimento.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">⏱ 45 min</span>
+                            <a href="luminaria.html" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card da Lixeira -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-48 flex items-center justify-center"><span class="text-6xl">🗑️</span></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Lixeira Automática</h3>
+                        <p class="text-gray-600 mb-4">Transforme uma lixeira comum em uma lixeira inteligente que abre sozinha.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">⏱ 60 min</span>
+                            <!-- BOTÃO ALTERADO -->
+                            <a href="lixeira.html" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card do Comedouro -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="bg-gradient-to-r from-purple-400 to-pink-500 h-48 flex items-center justify-center"><span class="text-6xl">🐕</span></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Comedouro Automático</h3>
+                        <p class="text-gray-600 mb-4">Pote de ração automático feito com potes de sorvete e servo motor.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">⏱ 90 min</span>
+                            <!-- BOTÃO ALTERADO -->
+                            <a href="comedouro.html" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card da Estação Meteorológica (Ainda em construção) -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="bg-gradient-to-r from-green-400 to-green-600 h-48 flex items-center justify-center"><span class="text-6xl">🌡️</span></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Estação Meteorológica</h3>
+                        <p class="text-gray-600 mb-4">Monte uma estação meteorológica com caixa de papelão e sensores.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">⏱ 120 min</span>
+                            <button class="ver-tutorial-btn bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card do Alarme (Ainda em construção) -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="bg-gradient-to-r from-red-400 to-red-600 h-48 flex items-center justify-center"><span class="text-6xl">🚨</span></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Alarme de Segurança</h3>
+                        <p class="text-gray-600 mb-4">Sistema de alarme usando latas vazias como sensores e buzzer.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">⏱ 75 min</span>
+                            <button class="ver-tutorial-btn bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card da Irrigação (Ainda em construção) -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
+                    <div class="bg-gradient-to-r from-indigo-400 to-indigo-600 h-48 flex items-center justify-center"><span class="text-6xl">🌱</span></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Irrigação Inteligente</h3>
+                        <p class="text-gray-600 mb-4">Sistema de irrigação automática para plantas usando garrafas PET.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-green-600 font-medium">⏱ 100 min</span>
+                            <button class="ver-tutorial-btn bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos Section -->
+    <section id="projetos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Galeria de Projetos</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Veja os projetos já realizados e inspire-se para criar os seus próprios!</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-yellow-300 to-orange-400 h-64 flex items-center justify-center">
+                        <div class="text-center text-white"><span class="text-8xl">💡</span>
+                            <p class="text-xl font-semibold mt-4">Luminária Inteligente</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Projeto Concluído</h3>
+                        <p class="text-gray-600 mb-4">Luminária feita com garrafa PET de 2L, LED strip e sensor PIR. Funciona perfeitamente e economiza energia!</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Arduino Uno</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Sensor PIR</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Garrafa PET</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-64 flex items-center justify-center">
+                        <div class="text-center text-white"><span class="text-8xl">🗑️</span>
+                            <p class="text-xl font-semibold mt-4">Lixeira do Futuro</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Projeto Concluído</h3>
+                        <p class="text-gray-600 mb-4">Lixeira que abre automaticamente quando detecta movimento. Feita com caixa de papelão reforçada e servo motor.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Arduino Nano</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Servo Motor</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Caixa Papelão</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-green-600 text-white rounded-lg p-8 text-center">
+                <h3 class="text-2xl font-bold mb-4">🎯 Objetivo do Projeto</h3>
+                <p class="text-lg mb-6">Demonstrar que é possível criar tecnologia útil e sustentável, combinando conhecimento em eletrônica com consciência ambiental. Cada projeto economiza materiais que iriam para o lixo e cria soluções práticas para o dia a dia.</p>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-bold">15+</div>
+                        <div class="text-green-200">Materiais Reciclados</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">6</div>
+                        <div class="text-green-200">Projetos Completos</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">100%</div>
+                        <div class="text-green-200">Sustentável</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kit Arduino Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Kit Arduino Básico</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Componentes essenciais que você precisa para começar seus projetos de EcoArduino</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-4xl mb-2">🔧</div>
+                        <h4 class="font-semibold text-gray-800">Arduino Uno</h4>
+                        <p class="text-sm text-gray-600">Microcontrolador principal</p>
+                    </div>
+                    <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-4xl mb-2">📡</div>
+                        <h4 class="font-semibold text-gray-800">Sensores</h4>
+                        <p class="text-sm text-gray-600">PIR, Ultrassônico, Temperatura</p>
+                    </div>
+                    <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-4xl mb-2">💡</div>
+                        <h4 class="font-semibold text-gray-800">LEDs e Resistores</h4>
+                        <p class="text-sm text-gray-600">Para iluminação e proteção</p>
+                    </div>
+                    <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+                        <div class="text-4xl mb-2">🔌</div>
+                        <h4 class="font-semibold text-gray-800">Cabos e Protoboard</h4>
+                        <p class="text-sm text-gray-600">Para conexões e testes</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 mb-4">💰 <strong>Custo total estimado:</strong> R$ 150-200</p>
+                    <p class="text-sm text-gray-500">Valores podem variar conforme fornecedor e região</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-20 bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Entre em Contato</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Tem dúvidas sobre os projetos? Quer sugerir novos tutoriais? Entre em contato conosco!</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Informações do Projeto</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🎓</span>
+                            <div>
+                                <p class="font-semibold">Projeto Acadêmico</p>
+                                <p class="text-gray-300">Engenharia/Tecnologia</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">📧</span>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p class="text-gray-300">ecoarduino@projeto.edu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🌍</span>
+                            <div>
+                                <p class="font-semibold">Missão</p>
+                                <p class="text-gray-300">Tecnologia sustentável para todos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-4">Contribua com o Projeto</h4>
+                        <div class="space-y-2">
+                            <p class="text-gray-300">• Compartilhe seus próprios projetos</p>
+                            <p class="text-gray-300">• Sugira novos tutoriais</p>
+                            <p class="text-gray-300">• Reporte bugs ou melhorias</p>
+                            <p class="text-gray-300">• Ajude outros estudantes</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Envie sua Mensagem</h3>
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <p class="text-gray-300 text-center py-8">
+                            📬 Formulário de Contato Demo<br>
+                            <span class="text-sm">Este é um formulário de demonstração para o projeto acadêmico</span>
+                        </p>
+                    </div>
+                    <div class="mt-6 p-4 bg-green-600 rounded-lg">
+                        <h4 class="font-semibold mb-2">🚀 Próximos Passos</h4>
+                        <p class="text-sm">Estamos trabalhando em novos tutoriais! Em breve: sistema de monitoramento de plantas e robô seguidor de linha com materiais reciclados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">🔧 EcoArduino</h3>
+                    <p class="text-gray-400">Transformando lixo em tecnologia através da educação e inovação sustentável.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Navegação</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#inicio" class="hover:text-white transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-white transition-colors">Sobre</a></li>
+                        <li><a href="#tutoriais" class="hover:text-white transition-colors">Tutoriais</a></li>
+                        <li><a href="#projetos" class="hover:text-white transition-colors">Projetos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tutoriais</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="luminaria.html" class="hover:text-white transition-colors">Luminária Inteligente</a></li>
+                        <li><a href="lixeira.html" class="hover:text-white transition-colors">Lixeira Automática</a></li>
+                        <li><a href="comedouro.html" class="hover:text-white transition-colors">Comedouro Pet</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Todos os Projetos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Sustentabilidade</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-gray-400"><span class="mr-2">♻️</span><span class="text-sm">Materiais Reutilizados</span></div>
+                        <div class="flex items-center text-gray-400"><span class="mr-2">🌱</span><span class="text-sm">Impacto Ambiental Positivo</span></div>
+                        <div class="flex items-center text-gray-400"><span class="mr-2">📚</span><span class="text-sm">Educação Sustentável</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 EcoArduino - Projeto Acadêmico. Feito com ♻️ e 💚 para um mundo mais sustentável.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

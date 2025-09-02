@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Lixeira Automática - EcoArduino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Link para o MESMO arquivo de estilos CSS que a página inicial usa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Barra de Navegação - Idêntica à da página inicial para consistência -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
+                        </svg>
+                        <span class="font-black">EcoArduino</span>
+                    </a>
+                </div>
+                <!-- Links do Menu Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#inicio" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
+                        <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
+                        <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
+                        <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="index.html#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                    </div>
+                </div>
+                <!-- Botão de voltar para mobile -->
+                <div class="md:hidden">
+                    <a href="index.html" class="text-gray-700 hover:text-green-600 focus:outline-none" aria-label="Voltar para a página inicial">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal do Tutorial -->
+    <main class="pt-24 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Cabeçalho -->
+        <header class="text-center mb-12">
+            <div class="text-6xl mb-4">🗑️</div>
+            <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Lixeira Automática Inteligente</h1>
+            <p class="text-xl text-gray-600">Construa uma lixeira que abre sozinha ao aproximar a mão, unindo conveniência e tecnologia sustentável.</p>
+        </header>
+
+        <!-- Seção de Materiais -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">🧰 Materiais Necessários</h2>
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>1x Arduino UNO (ou similar)</li>
+                    <li>1x Servo Motor (ex: SG90)</li>
+                    <li>1x Sensor Ultrassônico (HC-SR04)</li>
+                </ul>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Jumpers (fios de conexão)</li>
+                    <li>Fonte de energia (bateria 9V ou carregador)</li>
+                    <li>Uma lixeira comum (de plástico ou papelão)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção Passo a Passo -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">🛠 Montagem – Passo a Passo</h2>
+            <div class="space-y-8">
+                <!-- Passo 1 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">1</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o Sensor Ultrassônico</h3>
+                        <p class="text-lg text-gray-700">Este sensor detectará a aproximação da sua mão.<br>
+                            • Pino <strong>VCC</strong> do sensor → Porta <strong>5V</strong> do Arduino.<br>
+                            • Pino <strong>Trig</strong> do sensor → Porta digital <strong>9</strong> do Arduino.<br>
+                            • Pino <strong>Echo</strong> do sensor → Porta digital <strong>10</strong> do Arduino.<br>
+                            • Pino <strong>GND</strong> do sensor → Porta <strong>GND</strong> do Arduino.
+                        </p>
+                    </div>
+                </div>
+                <!-- Passo 2 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">2</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o Servo Motor</h3>
+                        <p class="text-lg text-gray-700">O servo será o motor que abre e fecha a tampa.<br>
+                            • Fio de Sinal (Laranja) do servo → Porta digital <strong>11</strong> do Arduino.<br>
+                            • Fio de Alimentação (Vermelho) do servo → Porta <strong>5V</strong> do Arduino.<br>
+                            • Fio Terra (Marrom) do servo → Porta <strong>GND</strong> do Arduino.
+                        </p>
+                    </div>
+                </div>
+                <!-- Passo 3 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">3</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Montagem Física</h3>
+                        <p class="text-lg text-gray-700">Fixe o sensor ultrassônico na parte frontal da lixeira, apontado para cima. Prenda o servo motor na borda da lixeira e conecte sua hélice à tampa (você pode usar um arame ou um pedaço de plástico reciclado para fazer a articulação).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do Código -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">💻 Código do Arduino</h2>
+            <p class="text-lg text-gray-700 mb-4">Este código mede a distância com o sensor. Se algo chegar perto (menos de 20cm), ele aciona o servo para abrir a tampa, espera 5 segundos e depois fecha.</p>
+            <div class="bg-gray-800 rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
+                <pre><code>#include &lt;Servo.h&gt;
+
+// Define os pinos para o sensor e o servo
+const int pinoTrig = 9;
+const int pinoEcho = 10;
+const int pinoServo = 11;
+
+// Define a distância para acionar a lixeira (em cm)
+const int distanciaAbertura = 20;
+
+// Variáveis para o sensor
+long duracao;
+int distancia;
+
+// Cria o objeto servo
+Servo motorTampa;
+
+void setup() {
+  // Configura os pinos do sensor
+  pinMode(pinoTrig, OUTPUT);
+  pinMode(pinoEcho, INPUT);
+  
+  // Anexa o servo ao pino definido
+  motorTampa.attach(pinoServo);
+  // Garante que a tampa comece fechada
+  motorTampa.write(0);
+  
+  // Inicia a comunicação serial para debug
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Limpa o pino de trigger
+  digitalWrite(pinoTrig, LOW);
+  delayMicroseconds(2);
+  
+  // Envia um pulso de 10 microssegundos para o trigger
+  digitalWrite(pinoTrig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(pinoTrig, LOW);
+  
+  // Lê o tempo de retorno do pulso no pino echo
+  duracao = pulseIn(pinoEcho, HIGH);
+  
+  // Converte o tempo em distância (cm)
+  distancia = duracao * 0.034 / 2;
+  
+  // Exibe a distância no Monitor Serial
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.println(" cm");
+
+  // Se a distância for menor que o limite, abre a tampa
+  if (distancia < distanciaAbertura) {
+    Serial.println("Objeto detectado! Abrindo a tampa...");
+    motorTampa.write(90); // Move o servo para 90 graus (tampa aberta)
+    delay(5000); // Mantém a tampa aberta por 5 segundos
+    
+    Serial.println("Fechando a tampa.");
+    motorTampa.write(0);  // Move o servo de volta para 0 graus (tampa fechada)
+    delay(1000); // Espera um pouco antes de poder abrir de novo
+  }
+  
+  delay(100); // Pequeno delay no loop principal
+}
+</code></pre>
+            </div>
+        </section>
+        
+        <!-- Dicas de Sustentabilidade -->
+        <section>
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">💡 Dicas de Sustentabilidade</h2>
+            <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-6 rounded-lg">
+                <ul class="list-disc list-inside space-y-2 text-lg">
+                    <li>Use uma <strong>lixeira de plástico ou balde velho</strong> como a estrutura principal.</li>
+                    <li>Crie a articulação da tampa com um <strong>arame de cabide ou clipes de papel</strong>.</li>
+                    <li>Faça a tampa com um pedaço de <strong>papelão grosso de alguma caixa</strong> que iria para o lixo.</li>
+                    <li>Alimente o projeto com um <strong>carregador de celular antigo</strong> para evitar o uso de pilhas.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; 2024 EcoArduino - Projeto Acadêmico. Feito com ♻ e 💚 para um mundo mais sustentável.</p>
+            <p class="mt-2"><a href="index.html" class="hover:text-white transition-colors underline">Voltar para a página inicial</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

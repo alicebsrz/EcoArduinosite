@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Luminária Sustentável - EcoArduino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Link para o MESMO arquivo de estilos CSS que a página inicial usa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Barra de Navegação - Idêntica à da página inicial para consistência -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
+                        </svg>
+                        <span class="font-black">EcoArduino</span>
+                    </a>
+                </div>
+                <!-- Links do Menu Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#inicio" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
+                        <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
+                        <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
+                        <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="index.html#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                    </div>
+                </div>
+                <!-- Botão de voltar para mobile -->
+                <div class="md:hidden">
+                    <a href="index.html" class="text-gray-700 hover:text-green-600 focus:outline-none" aria-label="Voltar para a página inicial">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal do Tutorial -->
+    <main class="pt-24 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Cabeçalho -->
+        <header class="text-center mb-12">
+            <div class="text-6xl mb-4">💡</div>
+            <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Luminária Sustentável com Sensor de Presença</h1>
+            <p class="text-xl text-gray-600">Criar uma luminária inteligente que acende automaticamente ao detectar presença e desliga após alguns segundos sem movimento, utilizando peças recicladas.</p>
+        </header>
+
+        <!-- Seção de Materiais -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-6">🧰 Materiais Necessários</h2>
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>1x Arduino UNO (ou similar)</li>
+                    <li>1x Sensor PIR (ex: HC-SR501)</li>
+                    <li>1x LED de alto brilho ou fita LED</li>
+                    <li>1x Resistor 220Ω (se usar LED)</li>
+                    <li>Jumpers (fios de conexão)</li>
+                </ul>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Protoboard</li>
+                    <li>Fonte de energia (carregador, pilha 9V)</li>
+                    <li>Suporte reciclado (pote, lata, etc.)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção Passo a Passo -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-6">🛠 Montagem – Passo a Passo</h2>
+            <div class="space-y-8">
+                <!-- Passo 1 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-green-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">1</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o LED</h3>
+                        <p class="text-lg text-gray-700 mb-2"><strong>Opção A (LED individual):</strong> Conecte a perna maior (anodo) do LED a um resistor de 220Ω, e o resistor ao pino 13 do Arduino. Conecte a perna menor (catodo) ao GND.</p>
+                        <p class="text-lg text-gray-700"><strong>Opção B (Fita de LED 5V):</strong> Conecte o VCC da fita ao pino 13 e o GND da fita ao GND do Arduino. Para fitas mais potentes, use um relé ou transistor.</p>
+                    </div>
+                </div>
+                <!-- Passo 2 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-green-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">2</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o Sensor PIR</h3>
+                        <p class="text-lg text-gray-700">
+                            • Fio VCC (vermelho) do sensor → Porta <strong>5V</strong> do Arduino.<br>
+                            • Fio GND (preto) do sensor → Porta <strong>GND</strong> do Arduino.<br>
+                            • Fio OUT (sinal) do sensor → Porta digital <strong>2</strong> do Arduino.
+                        </p>
+                    </div>
+                </div>
+                <!-- Passo 3 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-green-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">3</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Alimentação</h3>
+                        <p class="text-lg text-gray-700">Conecte o Arduino à sua fonte de energia escolhida, como um cabo USB, uma bateria de 9V ou um powerbank reciclado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do Código -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-6">💻 Código do Arduino</h2>
+            <p class="text-lg text-gray-700 mb-4">Copie o código abaixo, cole na sua Arduino IDE e envie para a placa.</p>
+            <div class="bg-gray-800 rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
+                <pre><code>int ledPin = 13;
+int pirPin = 2;
+int tempoDesligar = 10000; // 10 segundos em milissegundos
+
+unsigned long tempoUltimoMovimento = 0;
+bool ledLigado = false;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(pirPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int movimento = digitalRead(pirPin);
+
+  if (movimento == HIGH) {
+    digitalWrite(ledPin, HIGH);
+    tempoUltimoMovimento = millis();
+    if (!ledLigado) {
+      Serial.println("Movimento detectado - LED ligado");
+      ledLigado = true;
+    }
+  }
+
+  if (ledLigado && (millis() - tempoUltimoMovimento > tempoDesligar)) {
+    digitalWrite(ledPin, LOW);
+    ledLigado = false;
+    Serial.println("Sem movimento - LED desligado");
+  }
+}
+</code></pre>
+            </div>
+        </section>
+        
+        <!-- Dicas de Sustentabilidade -->
+        <section>
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-green-500 pb-2 mb-6">💡 Dicas de Sustentabilidade</h2>
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-800 p-6 rounded-lg">
+                <ul class="list-disc list-inside space-y-2 text-lg">
+                    <li>Use <strong>LEDs retirados de equipamentos antigos</strong> (monitores, TVs, etc.).</li>
+                    <li>A estrutura pode ser feita com <strong>potes de vidro, latinhas ou embalagens</strong>.</li>
+                    <li>Uma <strong>tampa de pote de sorvete</strong> pode servir como uma ótima base.</li>
+                    <li>Aproveite <strong>cabos e conectores de eletrônicos</strong> que seriam descartados.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; 2024 EcoArduino - Projeto Acadêmico. Feito com ♻ e 💚 para um mundo mais sustentável.</p>
+            <p class="mt-2"><a href="index.html" class="hover:text-white transition-colors underline">Voltar para a página inicial</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
+

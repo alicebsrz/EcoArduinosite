@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Comedouro Automático - EcoArduino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Link para o MESMO arquivo de estilos CSS que a página inicial usa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Barra de Navegação - Idêntica à da página inicial para consistência -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
+                        </svg>
+                        <span class="font-black">EcoArduino</span>
+                    </a>
+                </div>
+                <!-- Links do Menu Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#inicio" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
+                        <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
+                        <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
+                        <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="index.html#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                    </div>
+                </div>
+                <!-- Botão de voltar para mobile -->
+                <div class="md:hidden">
+                    <a href="index.html" class="text-gray-700 hover:text-green-600 focus:outline-none" aria-label="Voltar para a página inicial">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal do Tutorial -->
+    <main class="pt-24 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Cabeçalho -->
+        <header class="text-center mb-12">
+            <div class="text-6xl mb-4">🐕</div>
+            <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Comedouro Automático para Pets</h1>
+            <p class="text-xl text-gray-600">Alimente seu pet nos horários certos, mesmo quando não estiver em casa, usando um sistema automatizado e materiais reciclados.</p>
+        </header>
+
+        <!-- Seção de Materiais -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">🧰 Materiais Necessários</h2>
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>1x Arduino UNO (ou similar)</li>
+                    <li>1x Servo Motor (ex: SG90)</li>
+                    <li>1x Sensor Ultrassônico (HC-SR04)</li>
+                    <li>1x Display LCD 16x2 ou 20x4</li>
+                </ul>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>1x LED RGB (ânodo comum)</li>
+                    <li>Jumpers (fios de conexão)</li>
+                    <li>Protoboard e Fonte de energia</li>
+                    <li>Estrutura reciclada (pote de sorvete, garrafa PET grande)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção Passo a Passo -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">🛠 Montagem – Passo a Passo</h2>
+            <div class="space-y-8">
+                <!-- Passo 1 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-purple-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">1</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o Display LCD</h3>
+                        <p class="text-lg text-gray-700">Conecte os pinos do LCD aos pinos do Arduino conforme definido no código: <strong>6, 7, 9, 10, 11, 12</strong>. Não se esqueça de conectar também os pinos de alimentação (VCC e GND) e contraste.</p>
+                    </div>
+                </div>
+                <!-- Passo 2 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-purple-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">2</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o Servo Motor</h3>
+                        <p class="text-lg text-gray-700">
+                            • Fio de Sinal (Laranja) do servo → Porta digital <strong>3</strong> do Arduino.<br>
+                            • Fio de Alimentação (Vermelho) do servo → Porta <strong>5V</strong> do Arduino.<br>
+                            • Fio Terra (Marrom) do servo → Porta <strong>GND</strong> do Arduino.
+                        </p>
+                    </div>
+                </div>
+                <!-- Passo 3 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-purple-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">3</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o Sensor Ultrassônico</h3>
+                        <p class="text-lg text-gray-700">
+                            • Pino <strong>Trig</strong> do sensor → Porta digital <strong>4</strong> do Arduino.<br>
+                            • Pino <strong>Echo</strong> do sensor → Porta digital <strong>5</strong> do Arduino.
+                        </p>
+                    </div>
+                </div>
+                <!-- Passo 4 -->
+                 <div class="flex items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-purple-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">4</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Conectando o LED RGB</h3>
+                        <p class="text-lg text-gray-700">
+                            • Pino <strong>R (Vermelho)</strong> do LED → Porta analógica <strong>A4</strong> do Arduino.<br>
+                            • Pino <strong>G (Verde)</strong> do LED → Porta digital <strong>2</strong> do Arduino.<br>
+                            • Pino <strong>B (Azul)</strong> do LED → Porta digital <strong>13</strong> do Arduino.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do Código -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">💻 Código do Arduino</h2>
+            <p class="text-lg text-gray-700 mb-4">Este código controla o servo motor para liberar a ração em intervalos fixos e usa o sensor ultrassônico para medir o nível de ração, indicando com o LED RGB.</p>
+            <div class="bg-gray-800 rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
+                <pre><code>#include &lt;LiquidCrystal.h&gt;
+#include &lt;Servo.h&gt;
+
+// Declaração dos pinos
+#define pinR A4
+#define pinG 2
+#define pinB 13
+#define trig 4
+#define echo 5
+#define pinServo 3
+
+LiquidCrystal LCD(6, 7, 9, 10, 11, 12);
+Servo servo1;
+
+unsigned long ultimaLiberacao = 0;
+const unsigned long intervalo = 15000; // 15 segundos
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pinR, OUTPUT);
+  pinMode(pinG, OUTPUT);
+  pinMode(pinB, OUTPUT);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  LCD.begin(20, 4);
+  servo1.attach(pinServo);
+  servo1.write(0);
+}
+
+void loop() {
+  digitalWrite(trig, LOW);
+  delayMicroseconds(5);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+
+  int duracao = pulseIn(echo, HIGH);
+  int cm = (duracao / 2) / 29.1;
+
+  if (cm <= 10) {
+    setColor(0, 255, 0); // Verde - Cheio
+  } else if (cm > 10 && cm <= 20) {
+    setColor(0, 0, 255); // Azul - Médio
+  } else if (cm > 20) {
+    setColor(255, 0, 0); // Vermelho - Vazio
+    LCD.setCursor(0, 0);
+    LCD.print("REESTOCAR URGENTE!");
+    delay(2000);
+    LCD.clear();
+  }
+
+  unsigned long agora = millis();
+  if (agora - ultimaLiberacao >= intervalo) {
+    ultimaLiberacao = agora;
+    liberarRacao();
+  }
+  
+  Serial.print(cm);
+  Serial.println(" cm");
+}
+
+void liberarRacao() {
+  LCD.clear();
+  LCD.setCursor(0, 0);
+  LCD.print("Liberando racao...");
+  servo1.write(90);
+  delay(2000);
+  servo1.write(0);
+  delay(500);
+  LCD.clear();
+}
+
+void setColor(int r, int g, int b) {
+  analogWrite(pinR, 255 - r); // Ajuste para anodo comum
+  analogWrite(pinG, 255 - g);
+  analogWrite(pinB, 255 - b);
+}
+</code></pre>
+            </div>
+        </section>
+        
+        <!-- Dicas de Sustentabilidade -->
+        <section>
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">💡 Dicas de Sustentabilidade</h2>
+            <div class="bg-purple-100 border-l-4 border-purple-500 text-purple-800 p-6 rounded-lg">
+                <ul class="list-disc list-inside space-y-2 text-lg">
+                    <li>Use um <strong>pote de sorvete grande</strong> ou uma <strong>garrafa PET de 5 litros</strong> como o reservatório principal de ração.</li>
+                    <li>Crie o mecanismo de liberação com <strong>pedaços de papelão ou plástico recortado</strong>, colados ao servo motor.</li>
+                    <li>Aproveite uma <strong>fonte de celular antiga</strong> para alimentar o seu projeto de forma contínua e segura.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; 2024 EcoArduino - Projeto Acadêmico. Feito com ♻ e 💚 para um mundo mais sustentável.</p>
+            <p class="mt-2"><a href="index.html" class="hover:text-white transition-colors underline">Voltar para a página inicial</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

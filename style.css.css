@@ -1,0 +1,36 @@
+/* Define a fonte padrão para todo o site */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Efeito de hover para os cards das seções */
+.card-hover {
+    transition: all 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px); /* Levanta o card um pouco mais para dar destaque */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Adiciona uma sombra mais pronunciada */
+}
+
+/* Estilização e animação do quadrado verde na seção inicial */
+.hero-square {
+    animation: pulse-animation 4s infinite ease-in-out;
+}
+
+/* Define a animação de "pulsar" */
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px -12px rgba(45, 212, 191, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+}
+
