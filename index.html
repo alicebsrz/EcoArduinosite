@@ -9,18 +9,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para a nova seção de início interativa */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Fica atrás do conteúdo */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Fica na frente da animação */
+        }
+    </style>
 </head>
-<body class="scroll-smooth">
+<body class="scroll-smooth bg-gray-900">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
+                <!-- Logo com Imagem -->
                 <div class="flex items-center">
                     <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
-                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
-                        </svg>
+                        <img src="imagens/logo.png.png" alt="Logo EcoArduino" class="w-8 h-8 mr-2">
                         <span class="font-black">EcoArduino</span>
                     </a>
                 </div>
@@ -31,6 +44,8 @@
                         <a href="#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
                         <a href="#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
                         <a href="#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <!-- !!! NOVA ABA ADICIONADA AQUI !!! -->
+                        <a href="componentes.html" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Componentes</a>
                         <a href="#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
                     </div>
                 </div>
@@ -51,16 +66,23 @@
                 <a href="#sobre" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
                 <a href="#tutoriais" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Tutoriais</a>
                 <a href="#projetos" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Projetos</a>
+                <!-- !!! NOVA ABA ADICIONADA AQUI !!! -->
+                <a href="componentes.html" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Componentes</a>
                 <a href="#contato" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Contato</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="bg-gray-100 flex items-center justify-center min-h-screen">
-        <div class="text-center p-8">
-            <div class="hero-square bg-green-500 rounded-3xl shadow-2xl p-10 inline-block">
-                <h1 class="text-7xl font-black text-white">EcoArduino</h1>
+    <!-- Hero Section Interativa -->
+    <section id="inicio" class="relative bg-gray-900 flex items-center justify-center h-screen overflow-hidden">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content text-center text-white p-8">
+            <img src="imagens/logo.png.png" alt="Logo EcoArduino" class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6">
+            <h1 class="text-5xl md:text-7xl font-black text-white drop-shadow-lg mb-4">EcoArduino</h1>
+            <p class="text-lg md:text-xl text-green-200 max-w-2xl mx-auto mb-8">Tecnologia que renasce do descarte. Transforme lixo em inovação.</p>
+            <div class="space-x-4">
+                 <a href="#tutoriais" onclick="scrollToSection('tutoriais')" class="bg-white text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105">Ver Tutoriais</a>
+                 <a href="#projetos" onclick="scrollToSection('projetos')" class="border-2 border-green-300 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-500 hover:border-green-500 transition-all duration-300 transform hover:scale-105">Explorar Projetos</a>
             </div>
         </div>
     </section>
@@ -100,7 +122,6 @@
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">Aprenda a criar projetos incríveis com materiais reciclados e Arduino. Cada tutorial inclui lista de materiais, código e instruções detalhadas.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card da Luminária -->
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
                     <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-48 flex items-center justify-center"><span class="text-6xl">💡</span></div>
                     <div class="p-6">
@@ -113,7 +134,6 @@
                     </div>
                 </div>
 
-                <!-- Card da Lixeira -->
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
                     <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-48 flex items-center justify-center"><span class="text-6xl">🗑️</span></div>
                     <div class="p-6">
@@ -121,13 +141,11 @@
                         <p class="text-gray-600 mb-4">Transforme uma lixeira comum em uma lixeira inteligente que abre sozinha.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-green-600 font-medium">⏱ 60 min</span>
-                            <!-- BOTÃO ALTERADO -->
                             <a href="lixeira.html" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card do Comedouro -->
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
                     <div class="bg-gradient-to-r from-purple-400 to-pink-500 h-48 flex items-center justify-center"><span class="text-6xl">🐕</span></div>
                     <div class="p-6">
@@ -135,13 +153,11 @@
                         <p class="text-gray-600 mb-4">Pote de ração automático feito com potes de sorvete e servo motor.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-green-600 font-medium">⏱ 90 min</span>
-                            <!-- BOTÃO ALTERADO -->
                             <a href="comedouro.html" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">Ver Tutorial</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card da Estação Meteorológica (Ainda em construção) -->
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
                     <div class="bg-gradient-to-r from-green-400 to-green-600 h-48 flex items-center justify-center"><span class="text-6xl">🌡️</span></div>
                     <div class="p-6">
@@ -154,7 +170,6 @@
                     </div>
                 </div>
 
-                <!-- Card do Alarme (Ainda em construção) -->
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
                     <div class="bg-gradient-to-r from-red-400 to-red-600 h-48 flex items-center justify-center"><span class="text-6xl">🚨</span></div>
                     <div class="p-6">
@@ -167,7 +182,6 @@
                     </div>
                 </div>
 
-                <!-- Card da Irrigação (Ainda em construção) -->
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
                     <div class="bg-gradient-to-r from-indigo-400 to-indigo-600 h-48 flex items-center justify-center"><span class="text-6xl">🌱</span></div>
                     <div class="p-6">
@@ -246,7 +260,7 @@
     </section>
 
     <!-- Kit Arduino Section -->
-    <section class="py-20 bg-white">
+    <section id="kit" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Kit Arduino Básico</h2>
@@ -348,7 +362,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">🔧 EcoArduino</h3>
+                    <a href="index.html" class="text-2xl font-bold text-white flex items-center mb-4">
+                        <img src="imagens/logo.png.png" alt="Logo EcoArduino" class="w-8 h-8 mr-2">
+                        <span class="font-black">EcoArduino</span>
+                    </a>
                     <p class="text-gray-400">Transformando lixo em tecnologia através da educação e inovação sustentável.</p>
                 </div>
                 <div>
@@ -385,6 +402,103 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- SCRIPT DA ANIMAÇÃO DE PARTÍCULAS -->
+    <script>
+        const canvas = document.getElementById('hero-canvas');
+        if (canvas) { // Garante que o script só rode se o canvas existir
+            const ctx = canvas.getContext('2d');
+            let particlesArray;
+
+            const mouse = { x: null, y: null, radius: 0 };
+            
+            window.addEventListener('mousemove', function(event) {
+                mouse.x = event.x;
+                mouse.y = event.y;
+            });
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(45, 212, 191, 0.2)';
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+                    if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius + this.size){
+                        if(mouse.x < this.x && this.x < canvas.width - this.size * 10){ this.x += 3; }
+                        if(mouse.x > this.x && this.x > this.size * 10){ this.x -= 3; }
+                        if(mouse.y < this.y && this.y < canvas.height - this.size * 10){ this.y += 3; }
+                        if(mouse.y > this.y && this.y > this.size * 10){ this.y -= 3; }
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function init() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                mouse.radius = (canvas.height / 120) * (canvas.width / 120);
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 9000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 4) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * .4) - 0.2;
+                    let directionY = (Math.random() * .4) - 0.2;
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size));
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+                connect();
+            }
+
+            function connect(){
+                let opacityValue = 1;
+                for(let a = 0; a < particlesArray.length; a++){
+                    for(let b = a; b < particlesArray.length; b++){
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                                     ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if(distance < (canvas.width/8) * (canvas.height/8)){
+                            opacityValue = 1 - (distance/20000);
+                            ctx.strokeStyle = 'rgba(45, 212, 191, ' + opacityValue + ')';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            window.addEventListener('resize', init);
+            init();
+            animate();
+        }
+    </script>
 </body>
 </html>
 

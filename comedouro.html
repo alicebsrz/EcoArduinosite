@@ -8,21 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Link para o MESMO arquivo de estilos CSS que a página inicial usa -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50">
-    <!-- Barra de Navegação - Idêntica à da página inicial para consistência -->
+    <!-- Barra de Navegação -->
     <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
+                <!-- Logo com Imagem -->
                 <div class="flex items-center">
                     <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
-                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
-                        </svg>
+                        <!-- NOME DO ARQUIVO CORRIGIDO -->
+                        <img src="imagens/logo.png.png" alt="Logo EcoArduino" class="w-8 h-8 mr-2">
                         <span class="font-black">EcoArduino</span>
                     </a>
                 </div>
@@ -33,15 +30,29 @@
                         <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
                         <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
                         <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="componentes.html" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Componentes</a>
                         <a href="index.html#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
                     </div>
                 </div>
-                <!-- Botão de voltar para mobile -->
-                <div class="md:hidden">
-                    <a href="index.html" class="text-gray-700 hover:text-green-600 focus:outline-none" aria-label="Voltar para a página inicial">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </a>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-green-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                <a href="index.html#inicio" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Início</a>
+                <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
+                <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Tutoriais</a>
+                <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Projetos</a>
+                <a href="componentes.html" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Componentes</a>
+                <a href="index.html#contato" class="text-gray-600 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Contato</a>
             </div>
         </div>
     </nav>
@@ -49,12 +60,21 @@
     <!-- Conteúdo Principal do Tutorial -->
     <main class="pt-24 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Cabeçalho -->
         <header class="text-center mb-12">
             <div class="text-6xl mb-4">🐕</div>
             <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Comedouro Automático para Pets</h1>
             <p class="text-xl text-gray-600">Alimente seu pet nos horários certos, mesmo quando não estiver em casa, usando um sistema automatizado e materiais reciclados.</p>
         </header>
+
+        <!-- Seção do Protótipo Real -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">🏆 Protótipo Real</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- NOME DO ARQUIVO CORRIGIDO -->
+                <img src="imagens/prototipo-comedouro.jpg.png" alt="Foto do protótipo real do comedouro automático" class="w-full h-auto">
+                <p class="p-6 text-lg text-gray-700">Nosso comedouro montado com um pote de sorvete reciclado. O servo motor controla a abertura que libera a ração no prato.</p>
+            </div>
+        </section>
 
         <!-- Seção de Materiais -->
         <section class="mb-12">
@@ -72,6 +92,16 @@
                     <li>Protoboard e Fonte de energia</li>
                     <li>Estrutura reciclada (pote de sorvete, garrafa PET grande)</li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- Seção do Circuito Digital -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">🔌 Esquema do Circuito</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- NOME DO ARQUIVO CORRIGIDO -->
+                <img src="imagens/circuito_comedouro.png.png" alt="Diagrama do circuito do comedouro automático" class="w-full h-auto">
+                <p class="p-6 text-lg text-gray-700">Este diagrama mostra todas as conexões necessárias entre o Arduino, o LCD, o sensor de nível, o LED e o servo motor.</p>
             </div>
         </section>
 
@@ -110,7 +140,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- Passo 4 -->
+                 <!-- Passo 4 -->
                  <div class="flex items-start">
                     <div class="flex-shrink-0 w-12 h-12 bg-purple-500 text-white font-bold text-2xl rounded-full flex items-center justify-center mr-6">4</div>
                     <div>
@@ -203,11 +233,24 @@ void liberarRacao() {
 }
 
 void setColor(int r, int g, int b) {
-  analogWrite(pinR, 255 - r); // Ajuste para anodo comum
+  // Ajuste para anodo comum (inverte a lógica)
+  analogWrite(pinR, 255 - r);
   analogWrite(pinG, 255 - g);
   analogWrite(pinB, 255 - b);
 }
 </code></pre>
+            </div>
+        </section>
+
+        <!-- Seção do Tinkercad -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-6">🌐 Simulação no Tinkercad</h2>
+             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <a href="https://www.tinkercad.com/things/fIUvb3RqS3h-comedouro-automatico" target="_blank" rel="noopener noreferrer">
+                    <!-- NOME DO ARQUIVO CORRIGIDO -->
+                    <img src="imagens/tinkercad_comedouro.png.png" alt="Simulação do projeto do comedouro no Tinkercad" class="w-full h-auto border-b-4 border-transparent hover:border-purple-500 transition-all duration-300">
+                </a>
+                <p class="p-6 text-lg text-gray-700">Interaja com a simulação completa do comedouro no Tinkercad clicando na imagem. Você pode ver todos os componentes funcionando juntos.</p>
             </div>
         </section>
         
@@ -235,3 +278,4 @@ void setColor(int r, int g, int b) {
 
 </body>
 </html>
+

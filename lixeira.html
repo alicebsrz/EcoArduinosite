@@ -8,21 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Link para o MESMO arquivo de estilos CSS que a página inicial usa -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50">
-    <!-- Barra de Navegação - Idêntica à da página inicial para consistência -->
+    <!-- Barra de Navegação -->
     <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
+                <!-- Logo com Imagem -->
                 <div class="flex items-center">
                     <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
-                        <svg class="w-8 h-8 mr-2 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.472-2.472a3.375 3.375 0 00-4.773-4.773L6.75 11.42m5.877 5.877l-5.877-5.877m0 0a3.375 3.375 0 01-4.773-4.773l2.472 2.472" />
-                        </svg>
+                        <!-- NOME DO ARQUIVO CORRIGIDO -->
+                        <img src="imagens/logo.png.png" alt="Logo EcoArduino" class="w-8 h-8 mr-2">
                         <span class="font-black">EcoArduino</span>
                     </a>
                 </div>
@@ -33,6 +30,7 @@
                         <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
                         <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
                         <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="componentes.html" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Componentes</a>
                         <a href="index.html#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
                     </div>
                 </div>
@@ -49,12 +47,21 @@
     <!-- Conteúdo Principal do Tutorial -->
     <main class="pt-24 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Cabeçalho -->
         <header class="text-center mb-12">
             <div class="text-6xl mb-4">🗑️</div>
             <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Lixeira Automática Inteligente</h1>
             <p class="text-xl text-gray-600">Construa uma lixeira que abre sozinha ao aproximar a mão, unindo conveniência e tecnologia sustentável.</p>
         </header>
+
+        <!-- Seção do Protótipo Real -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">🏆 Protótipo Real</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- NOME DO ARQUIVO CORRIGIDO -->
+                <img src="imagens/prototipo-lixeira.jpg.png" alt="Foto do protótipo real da lixeira automática com Arduino" class="w-full h-auto">
+                <p class="p-6 text-lg text-gray-700">Este é o nosso protótipo da lixeira automática, feito com uma caixa de papelão reciclada. A tampa abre suavemente quando o sensor detecta um objeto próximo.</p>
+            </div>
+        </section>
 
         <!-- Seção de Materiais -->
         <section class="mb-12">
@@ -70,6 +77,16 @@
                     <li>Fonte de energia (bateria 9V ou carregador)</li>
                     <li>Uma lixeira comum (de plástico ou papelão)</li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- Seção do Circuito Digital -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">🔌 Esquema do Circuito</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- NOME DO ARQUIVO CORRIGIDO -->
+                <img src="imagens/circuito-lixeira.png.png" alt="Diagrama do circuito da lixeira automática" class="w-full h-auto">
+                <p class="p-6 text-lg text-gray-700">Utilize este esquema para fazer as conexões. Os pinos principais são: 9 e 10 para o sensor ultrassônico e 11 para o servo motor.</p>
             </div>
         </section>
 
@@ -136,54 +153,49 @@ int distancia;
 Servo motorTampa;
 
 void setup() {
-  // Configura os pinos do sensor
   pinMode(pinoTrig, OUTPUT);
   pinMode(pinoEcho, INPUT);
-  
-  // Anexa o servo ao pino definido
   motorTampa.attach(pinoServo);
-  // Garante que a tampa comece fechada
-  motorTampa.write(0);
-  
-  // Inicia a comunicação serial para debug
+  motorTampa.write(0); // Garante que a tampa comece fechada
   Serial.begin(9600);
 }
 
 void loop() {
-  // Limpa o pino de trigger
   digitalWrite(pinoTrig, LOW);
   delayMicroseconds(2);
-  
-  // Envia um pulso de 10 microssegundos para o trigger
   digitalWrite(pinoTrig, HIGH);
   delayMicroseconds(10);
   digitalWrite(pinoTrig, LOW);
   
-  // Lê o tempo de retorno do pulso no pino echo
   duracao = pulseIn(pinoEcho, HIGH);
-  
-  // Converte o tempo em distância (cm)
   distancia = duracao * 0.034 / 2;
   
-  // Exibe a distância no Monitor Serial
   Serial.print("Distancia: ");
   Serial.print(distancia);
   Serial.println(" cm");
 
-  // Se a distância for menor que o limite, abre a tampa
   if (distancia < distanciaAbertura) {
-    Serial.println("Objeto detectado! Abrindo a tampa...");
-    motorTampa.write(90); // Move o servo para 90 graus (tampa aberta)
-    delay(5000); // Mantém a tampa aberta por 5 segundos
-    
-    Serial.println("Fechando a tampa.");
-    motorTampa.write(0);  // Move o servo de volta para 0 graus (tampa fechada)
-    delay(1000); // Espera um pouco antes de poder abrir de novo
+    motorTampa.write(90); // Abre a tampa
+    delay(5000); // Mantém aberta por 5 segundos
+    motorTampa.write(0);  // Fecha a tampa
+    delay(1000); 
   }
   
-  delay(100); // Pequeno delay no loop principal
+  delay(100);
 }
 </code></pre>
+            </div>
+        </section>
+
+        <!-- Seção do Tinkercad -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-6">🌐 Simulação no Tinkercad</h2>
+             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <a href="https://www.tinkercad.com/things/cQv8z1yYj8j" target="_blank" rel="noopener noreferrer">
+                    <!-- NOME DO ARQUIVO CORRIGIDO -->
+                    <img src="imagens/tinkercad-lixeira.png.png" alt="Simulação do projeto da lixeira no Tinkercad" class="w-full h-auto border-b-4 border-transparent hover:border-blue-500 transition-all duration-300">
+                </a>
+                <p class="p-6 text-lg text-gray-700">Clique na imagem acima para interagir com a simulação do projeto no Tinkercad. Você pode ver o circuito em ação e testar o código virtualmente.</p>
             </div>
         </section>
         
@@ -212,3 +224,4 @@ void loop() {
 
 </body>
 </html>
+

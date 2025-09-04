@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário de Componentes - EcoArduino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Animação de entrada para os cards */
+        .component-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Keyframes da animação de entrada */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Delay na animação para cada card, criando um efeito cascata */
+        .component-card:nth-child(1) { animation-delay: 0.1s; }
+        .component-card:nth-child(2) { animation-delay: 0.2s; }
+        .component-card:nth-child(3) { animation-delay: 0.3s; }
+        .component-card:nth-child(4) { animation-delay: 0.4s; }
+        .component-card:nth-child(5) { animation-delay: 0.5s; }
+        .component-card:nth-child(6) { animation-delay: 0.6s; }
+        .component-card:nth-child(7) { animation-delay: 0.7s; }
+        .component-card:nth-child(8) { animation-delay: 0.8s; }
+        .component-card:nth-child(9) { animation-delay: 0.9s; }
+        .component-card:nth-child(10) { animation-delay: 1.0s; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Barra de Navegação -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo com Imagem -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                        <img src="imagens/logo.png.png" alt="Logo EcoArduino" class="w-8 h-8 mr-2">
+                        <span class="font-black">EcoArduino</span>
+                    </a>
+                </div>
+                <!-- Links do Menu Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#inicio" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
+                        <a href="index.html#sobre" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
+                        <a href="index.html#tutoriais" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tutoriais</a>
+                        <a href="index.html#projetos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
+                        <a href="index.html#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                    </div>
+                </div>
+                <!-- Botão de voltar para mobile -->
+                <div class="md:hidden">
+                    <a href="index.html" class="text-gray-700 hover:text-green-600 focus:outline-none" aria-label="Voltar para a página inicial">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal do Dicionário -->
+    <main class="pt-24 pb-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Cabeçalho da Página -->
+            <header class="text-center mb-16">
+                <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Dicionário de Componentes</h1>
+                <p class="text-xl text-gray-600">Conheça as peças fundamentais para dar vida aos seus projetos EcoArduino.</p>
+            </header>
+
+            <!-- Grid de Componentes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Card Arduino UNO -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/arduino-uno.jpg" alt="Arduino UNO">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Arduino UNO</h3>
+                            <p class="text-gray-700 text-base">O cérebro dos nossos projetos. É uma placa com um microcontrolador que pode ser programado para ler sensores e controlar motores, luzes e muito mais.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Display LCD -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/display-lcd.jpg" alt="Display LCD">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Display LCD 16x2</h3>
+                            <p class="text-gray-700 text-base">Uma pequena tela de cristal líquido que exibe textos e números. É perfeita para mostrar informações como status, alertas ou leituras de sensores.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Jumpers -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/jumpers.png" alt="Jumpers">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Jumpers</h3>
+                            <p class="text-gray-700 text-base">São os fios que conectam tudo! Eles permitem ligar os componentes ao Arduino e à protoboard de forma rápida e sem a necessidade de solda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card LED RGB -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/led-rgb.jpg" alt="LED RGB">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">LED RGB</h3>
+                            <p class="text-gray-700 text-base">Um LED especial que combina as cores Vermelho (R), Verde (G) e Azul (B) em um único componente, permitindo criar milhões de cores diferentes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card Protoboard -->
+                 <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/protoboard.jpg" alt="Protoboard">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Protoboard</h3>
+                            <p class="text-gray-700 text-base">Uma placa de ensaio usada para montar circuitos eletrônicos temporários. Seus furos interligados facilitam a conexão dos componentes sem solda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Resistor -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/resistor.jpg" alt="Resistor">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Resistor</h3>
+                            <p class="text-gray-700 text-base">Um componente que limita a passagem de corrente elétrica. É usado para proteger componentes sensíveis, como os LEDs, de receberem energia em excesso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Sensor PIR -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/sensor-pir.png" alt="Sensor PIR">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Sensor PIR</h3>
+                            <p class="text-gray-700 text-base">Detecta movimento de pessoas ou animais através da variação de calor (luz infravermelha). Ideal para projetos como a luminária automática.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Sensor Ultrassônico -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/sensor-ultrassonico.jpg" alt="Sensor Ultrassônico">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Sensor Ultrassônico</h3>
+                            <p class="text-gray-700 text-base">Mede distâncias emitindo um sinal de som de alta frequência e calculando o tempo que ele leva para retornar. Usado na lixeira e no comedouro.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Servo Motor -->
+                <div class="component-card bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <img class="h-48 w-full md:h-full md:w-48 object-cover" src="imagens/componentes/servo-motor.jpg" alt="Servo Motor">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">Servo Motor</h3>
+                            <p class="text-gray-700 text-base">Um motor que permite controlar a posição exata de seu eixo. É perfeito para criar movimentos precisos, como abrir a tampa de uma lixeira.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; 2024 EcoArduino - Projeto Acadêmico. Feito com ♻ e 💚 para um mundo mais sustentável.</p>
+            <p class="mt-2"><a href="index.html" class="hover:text-white transition-colors underline">Voltar para a página inicial</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
